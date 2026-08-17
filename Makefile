@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=headscale
-PKG_VERSION:=0.29.3
+PKG_VERSION:=0.25.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -49,12 +49,6 @@ define Package/headscale/conffiles
 /etc/headscale/db.sqlite
 /etc/headscale/noise_private.key
 /etc/headscale/derp_server_private.key
-endef
-
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	find $(PKG_BUILD_DIR) -name "go.mod" -exec sed -i -E 's/^(go [0-9]+\.[0-9]+)\.[0-9]+/\1/' {} + || true
-	find $(PKG_BUILD_DIR) -name "go.mod" -exec sed -i '/^toolchain /d' {} + || true
 endef
 
 define Package/headscale/install
