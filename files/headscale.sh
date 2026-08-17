@@ -26,7 +26,7 @@ EOF
 fi
 
 # Load UCI config
-. /lib/functions.mk
+. /lib/functions.sh
 
 config_load headscale
 
