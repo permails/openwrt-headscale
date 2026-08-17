@@ -67,8 +67,6 @@ define Package/headscale/install
 	$(INSTALL_BIN) ./files/headscale.sh $(1)/usr/share/headscale/headscale.sh
 
 	$(INSTALL_DIR) $(1)/etc/headscale
-	$(INSTALL_DIR) $(1)/var/run/headscale
-	$(INSTALL_DIR) $(1)/var/log/headscale
 endef
 
 $(eval $(call GoPackage,headscale))
