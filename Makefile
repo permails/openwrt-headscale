@@ -51,6 +51,12 @@ define Package/headscale/conffiles
 /etc/headscale/derp_server_private.key
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	find $(PKG_BUILD_DIR) -name "go.mod" -exec sed -i -E 's/^(go [0-9]+\.[0-9]+)\.[0-9]+/\1/' {} + || true
+	find $(PKG_BUILD_DIR) -name "go.mod" -exec sed -i '/^toolchain /d' {} + || true
+endef
+
 define Package/headscale/install
 	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 
